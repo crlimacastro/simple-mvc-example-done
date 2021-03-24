@@ -48,7 +48,11 @@ const searchDogName = (req, res) => {
     const savePromise = dog.save();
 
     savePromise.catch((err2) => res.status(500).json({ err2 }));
-    return savePromise.then(() => res.json(dog));
+    return savePromise.then(() => res.json({
+      name: dog.name,
+      breed: dog.breed,
+      age: dog.age,  
+    }));
   });
 };
 
